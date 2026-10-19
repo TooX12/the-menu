@@ -1,0 +1,193 @@
+/* The page that sells the three packages. */
+
+.home {
+  max-width: 62rem;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: clamp(1.5rem, 5vw, 3rem) 4rem;
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.home__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.9rem;
+}
+
+.home__brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.home__mark {
+  color: var(--gold);
+  font-size: 1.3rem;
+}
+
+.home__brand h1 {
+  font-size: var(--step-2);
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+}
+
+.home__head .langs {
+  margin-top: 0;
+}
+
+.home__hero {
+  display: flex;
+  gap: clamp(1rem, 4vw, 2.5rem);
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.home__lede {
+  font-family: var(--display);
+  font-size: var(--step-2);
+  line-height: 1.3;
+  max-width: 30rem;
+  min-width: 0;
+  text-wrap: balance;
+}
+
+.home__tent {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 0.9rem;
+  box-shadow: 0 10px 28px -18px var(--shadow);
+  min-width: 0;
+}
+
+.home__tentlabel {
+  font-family: var(--display);
+  font-size: var(--step-1);
+  font-variant-numeric: lining-nums;
+}
+
+.home__tenthint {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  max-width: 12rem;
+}
+
+/* --- the three packages --------------------------------------------- */
+
+.packages {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  align-items: stretch;
+}
+
+.pack {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 0.8rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: clamp(1.1rem, 3vw, 1.6rem);
+  min-width: 0;
+}
+
+.pack--servicio {
+  border-color: var(--seal);
+  box-shadow: 0 10px 30px -20px var(--shadow);
+}
+
+.pack__head {
+  display: grid;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--rule-soft);
+  padding-bottom: 0.7rem;
+}
+
+.pack__numeral {
+  font-family: var(--display);
+  font-size: var(--step-1);
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+
+.pack__name {
+  font-size: var(--step-2);
+}
+
+.pack__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.pack__price strong {
+  font-family: var(--display);
+  font-size: var(--step-1);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.pack__price span {
+  font-size: var(--step--1);
+  color: var(--ink-faint);
+}
+
+.pack__blurb {
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+}
+
+.pack__features {
+  display: grid;
+  gap: 0.4rem;
+  align-content: start;
+}
+
+.pack__features li {
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  gap: 0.4rem;
+  font-size: var(--step--1);
+}
+
+.pack__features li::before {
+  content: '❧';
+  color: var(--gold);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.pack__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--rule-soft);
+  padding-top: 0.8rem;
+}
+
+.home__foot {
+  display: grid;
+  gap: 0.35rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1rem;
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+}
+
+.home__fineprint {
+  color: var(--ink-faint);
+  font-style: italic;
+}

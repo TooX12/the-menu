@@ -1,0 +1,135 @@
+/* ------------------------------------------------------------------
+   The Menu — design tokens
+   Layout: a single card of menu stock laid on a linen cloth; everything
+   else (nav, bars, modals) is printed matter that belongs to that card.
+   ------------------------------------------------------------------ */
+
+:root {
+  /* Colour — warm card stock, iron-gall ink, an oxblood seal */
+  --cloth: #ddd2b8;
+  --cloth-deep: #cdc0a2;
+  --paper: #f4ead4;
+  --paper-warm: #ecdfc2;
+  --ink: #2a2319;
+  --ink-soft: #6d6049;
+  --ink-faint: #93866c;
+  --rule: #c6b48c;
+  --rule-soft: #d8cbab;
+  --seal: #7a2e24;
+  --seal-ink: #fdf6e6;
+  --gold: #8f7236;
+  --qr-light: #f4ead4;
+  --qr-dark: #2a2319;
+  --shadow: rgba(63, 48, 24, 0.22);
+
+  /* Type */
+  --display: 'Cormorant Garamond', 'Hoefler Text', 'Times New Roman', serif;
+  --body: 'EB Garamond', 'Iowan Old Style', Georgia, serif;
+
+  /* Scale */
+  --step--1: clamp(0.82rem, 0.8rem + 0.1vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.09rem);
+  --step-1: clamp(1.18rem, 1.1rem + 0.4vw, 1.35rem);
+  --step-2: clamp(1.45rem, 1.3rem + 0.7vw, 1.8rem);
+  --step-3: clamp(1.9rem, 1.6rem + 1.4vw, 2.7rem);
+
+  --sheet-max: 44rem;
+  --radius: 2px;
+
+  color-scheme: light;
+}
+
+/* The menu is a printed card: it keeps the paper palette in every theme,
+   rather than inverting into cream-on-brown when the phone is set to dark.
+   color-scheme above pins the form controls and scrollbars to match. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--body);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  color: var(--ink);
+  background-color: var(--cloth);
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.022) 0 1px,
+      transparent 1px 3px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.022) 0 1px,
+      transparent 1px 3px
+    ),
+    radial-gradient(120% 90% at 50% 0%, var(--cloth) 0%, var(--cloth-deep) 100%);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:where(a, button, input, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--seal);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
+code {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.86em;
+}
+
+.money,
+.tabular {
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

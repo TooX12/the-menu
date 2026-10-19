@@ -1,0 +1,457 @@
+/* The printed card itself: header, courses, dishes, table tent. */
+
+.menupage,
+.tablepage {
+  min-height: 100%;
+  padding-bottom: 7rem;
+}
+
+.menupage__main {
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: clamp(1rem, 3vw, 2.25rem);
+}
+
+/* --- the demo ribbon ------------------------------------------------ */
+
+.demobar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 8;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: baseline;
+  justify-content: space-between;
+  background: var(--cloth-deep);
+  border-bottom: 1px solid var(--rule-soft);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0.55rem;
+  font-size: var(--step--1);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: var(--cloth-deep);
+}
+
+.demobar__back {
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+
+.demobar__back:hover {
+  color: var(--ink);
+}
+
+.demobar__tag {
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+}
+
+/* --- the sheet ------------------------------------------------------ */
+
+.sheet {
+  max-width: var(--sheet-max);
+  margin-inline: auto;
+  background: var(--paper);
+  background-image: radial-gradient(
+    140% 100% at 50% 0%,
+    var(--paper) 55%,
+    var(--paper-warm) 100%
+  );
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow:
+    0 1px 0 var(--paper-warm) inset,
+    0 10px 30px -14px var(--shadow);
+  padding: clamp(1.4rem, 4vw, 2.75rem) clamp(1.1rem, 4vw, 3rem);
+}
+
+.sheet__head {
+  text-align: center;
+  display: grid;
+  gap: 0.45rem;
+  justify-items: center;
+}
+
+.sheet__est,
+.tent__est {
+  font-variant: small-caps;
+  letter-spacing: 0.3em;
+  font-size: var(--step--1);
+  color: var(--ink-faint);
+  margin-right: -0.3em;
+}
+
+.sheet__name {
+  font-size: var(--step-3);
+  letter-spacing: 0.01em;
+}
+
+.sheet__tagline {
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.sheet__rule,
+.tent__rule {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: min(100%, 22rem);
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+
+.sheet__rule span,
+.tent__rule span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rule), transparent);
+}
+
+.sheet__table {
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+}
+
+/* --- language picker ------------------------------------------------ */
+
+.langs {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.35rem;
+}
+
+.langs__item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  background: transparent;
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--radius);
+  padding: 0.22rem 0.6rem;
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+
+.langs__item:hover {
+  border-color: var(--rule);
+  color: var(--ink);
+}
+
+.langs__item.is-current {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.langs__code {
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+}
+
+.langs__name {
+  font-style: italic;
+}
+
+@media (max-width: 26rem) {
+  .langs__name {
+    display: none;
+  }
+}
+
+/* --- course navigation ---------------------------------------------- */
+
+.sections {
+  display: flex;
+  gap: 0.2rem 1.1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-block: clamp(1.2rem, 3vw, 2rem);
+  padding-block: 0.5rem;
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.sections__item {
+  background: none;
+  border: 0;
+  padding: 0.15rem 0;
+  color: var(--ink-faint);
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: var(--step--1);
+  border-bottom: 1px solid transparent;
+}
+
+.sections__item:hover {
+  color: var(--ink-soft);
+}
+
+.sections__item.is-active {
+  color: var(--ink);
+  border-bottom-color: var(--seal);
+}
+
+/* --- courses -------------------------------------------------------- */
+
+.course {
+  scroll-margin-top: 4.5rem;
+  margin-top: clamp(1.8rem, 5vw, 3rem);
+}
+
+.course__title {
+  font-size: var(--step-2);
+  text-align: center;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+}
+
+.course__note {
+  text-align: center;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+  max-width: 34rem;
+  margin-inline: auto;
+  margin-top: 0.3rem;
+}
+
+.course__list {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.4rem;
+}
+
+/* --- a dish --------------------------------------------------------- */
+
+.dish {
+  min-width: 0;
+}
+
+.dish__button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: 0.45rem 0.5rem;
+  margin: -0.45rem -0.5rem;
+  transition: background-color 130ms ease, border-color 130ms ease;
+}
+
+.dish--selectable .dish__button:hover {
+  background: color-mix(in srgb, var(--rule-soft) 36%, transparent);
+  border-color: var(--rule-soft);
+}
+
+.dish__tail {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: none;
+}
+
+.dish__cue {
+  flex: none;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background-color: transparent;
+  /* Two bars centred on the circle: one horizontal, one vertical. */
+  background-image: linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor);
+  background-size: 0.55rem 1px, 1px 0.55rem;
+  background-position: center, center;
+  background-repeat: no-repeat;
+  color: var(--ink-soft);
+}
+
+.dish.is-chosen .dish__cue {
+  background-color: var(--seal);
+  border-color: var(--seal);
+  color: var(--seal-ink);
+}
+
+/* Name, leader dots and price share a line the way they do in print.
+   When a long name wraps, the dots and the price settle on its last
+   line instead of floating beside the first one. */
+.dish__line {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.dish__name {
+  font-family: var(--display);
+  font-size: var(--step-1);
+  font-weight: 600;
+  min-width: 0;
+}
+
+.dish__count {
+  margin-left: 0.4rem;
+  font-family: var(--body);
+  font-size: var(--step--1);
+  font-variant-numeric: lining-nums;
+  color: var(--seal);
+}
+
+.dish__leader {
+  flex: 1;
+  min-width: 1.5rem;
+  border-bottom: 1px dotted var(--rule);
+  margin-bottom: 0.34em;
+}
+
+.dish__price {
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.dish__description {
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+  max-width: 38rem;
+  margin-top: 0.1rem;
+}
+
+.dish__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+}
+
+.tag {
+  font-size: 0.68rem;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  border: 1px solid var(--rule-soft);
+  border-radius: 999px;
+  padding: 0.05rem 0.5rem;
+}
+
+.tag--signature {
+  color: var(--seal);
+  border-color: color-mix(in srgb, var(--seal) 45%, transparent);
+}
+
+/* --- sheet footer --------------------------------------------------- */
+
+.sheet__foot {
+  display: grid;
+  justify-items: center;
+  gap: 0.4rem;
+  margin-top: clamp(2rem, 6vw, 3.5rem);
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: var(--step--1);
+}
+
+.sheet__address {
+  font-style: italic;
+}
+
+/* --- table tent ----------------------------------------------------- */
+
+.tent {
+  max-width: 24rem;
+  margin: clamp(1.2rem, 4vw, 2.5rem) auto 0;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px -16px var(--shadow);
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+
+.tent__name {
+  font-size: var(--step-2);
+}
+
+.tent__instruction {
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+}
+
+.tent__table {
+  font-family: var(--display);
+  font-size: var(--step-3);
+  line-height: 1;
+  font-variant-numeric: lining-nums;
+  color: var(--seal);
+}
+
+.qr {
+  display: block;
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--radius);
+  max-width: 100%;
+  height: auto;
+}
+
+.qr--error {
+  display: grid;
+  place-items: center;
+  color: var(--ink-faint);
+}
+
+.tablepage__controls {
+  max-width: 24rem;
+  margin: 1.5rem auto 0;
+  display: grid;
+  gap: 0.75rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.tablepage__url {
+  display: grid;
+  gap: 0.2rem;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  overflow-wrap: anywhere;
+}
+
+.tablepage__hint {
+  font-size: var(--step--1);
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.field {
+  display: grid;
+  gap: 0.3rem;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+.field input {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 0.45rem 0.6rem;
+  font-variant-numeric: lining-nums;
+}
